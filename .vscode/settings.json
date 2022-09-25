@@ -1,7 +1,12 @@
 {
     "cSpell.words": [
+        "clsx",
+        "fontawesome",
+        "fortawesome",
         "gomoku",
         "nang",
-        "predeploy"
+        "predeploy",
+        "pressable",
+        "xmark"
     ]
 }

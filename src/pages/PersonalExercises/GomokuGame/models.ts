@@ -1,3 +1,5 @@
+export enum Flag {X, O}
+
 export interface SquareModel {
-    flag: 'X' | 'O' | null;
+    flag: Flag.X | Flag.O | null;
 }

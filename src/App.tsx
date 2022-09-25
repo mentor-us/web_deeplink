@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import GomokuGame from "./pages/PersonalExercises/GomokuGame/GomokuGame";
 
-
 function App() {
   return (
 
