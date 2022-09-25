@@ -22,11 +22,12 @@ const Square = ({data, onPress}:Props) => {
         return <></>;
     }
   }
+  console.log("@DUKE_Reload Square");
   return (
     <button 
-      disabled={!!data.flag}
+      disabled={data.flag !== null}
       onClick={onPress} 
-      className={clsx(styles.button, {[styles.pressable]: !data.flag})}>
+      className={clsx(styles.button, {[styles.pressable]: data.flag === null})}>
         {renderIcon(data.flag)}
     </button>
   )

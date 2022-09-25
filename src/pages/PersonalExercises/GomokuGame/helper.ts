@@ -1,4 +1,4 @@
-import { SquareModel } from "./models";
+import { PointModel, SquareModel } from "./models";
 
 class Helper {
     static initBoard(rows: number, columns: number):Array<Array<SquareModel>>{
@@ -14,7 +14,7 @@ class Helper {
         return result;
     }
 
-    static checkWin(boards: Array<Array<SquareModel>>): boolean{
+    static checkWin(boards: Array<Array<SquareModel>>, p: PointModel): boolean{
         
         return false;
     }
