@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import clsx from 'clsx';
 import Square from './Square/Square';
 import styles from './GomokuGame.module.css';
@@ -13,6 +13,8 @@ export default function GomokuGame() {
   const [histories, setHistories] = useState<HistoryModel[]>([]);
   const [currentPlayer, setCurrentPlayer] = useState<Flag>(Flag.X);
   const [ascending, setAscending] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(1);
+  const [isWon, setIsWon] = useState<boolean>(false);
 
   const onPressSquare = (x:  number, y: number, item: SquareModel)=>{
     const newMove = {flag: currentPlayer, keyOfWin: false};
@@ -21,13 +23,31 @@ export default function GomokuGame() {
     setBoards(newBoards);
     setCurrentPlayer(currentPlayer === Flag.O ? Flag.X : Flag.O);
     const currentTime  = new Date();
-    console.log(currentTime.toTimeString().split(' ')[0]);
     
-    setHistories(prev => [{player: currentPlayer, point: {_x: x, _y: y}, time: currentTime.toTimeString().split(' ')[0]}, ...prev])
+    setHistories(prev => [{player: currentPlayer, point: {_x: x, _y: y}, time: currentTime.toTimeString().split(' ')[0]}, ...prev]);
+    setCount(prev => prev + 1);
+    
+    const wins: Array<PointModel> = Helper.findWinSquares(boards, {_x: x, _y: y});
+    
+    if(wins.length >= 5){
+      const newBoard: Array<Array<SquareModel>> = [...boards];
+      wins.forEach((item)=>{
+        newBoard[item._x][item._y] = {...newBoard[item._x][item._y], keyOfWin: true};
+      })
+      setBoards(newBoard)
+      setIsWon(true);
+      alert(`${Flag[currentPlayer]} won!`);
+      return;
+    }
+
+    if(count == 25){
+      alert("No one wins, This is a draw!")
+      console.log("No one wins, This is a draw!");
+    }
   }
 
   const renderSquare = (item: SquareModel, x: number, y: number)=>{
-    return <Square data={item} onPress={()=>onPressSquare(x, y, item)}/>
+    return <Square data={item} onPress={()=>onPressSquare(x, y, item)} won={isWon}/>
   } 
 
   const handleSortingHistory = ()=> {
@@ -36,10 +56,18 @@ export default function GomokuGame() {
   }
 
   const createNewGame = ()=>{
+    setCount(0);
+    setIsWon(false);
     setBoards(Helper.initBoard(n, n));
   }
 
-  console.log("@DUKE_Reload");
+  // useLayoutEffect(()=>{
+  //   if(isWon){
+  //     alert(`${Flag[currentPlayer]} won!`);
+  //   }
+  // }, [isWon])
+
+  // console.log("@DUKE_Reload");
   return (
     <div>
       <div className={styles.container}>

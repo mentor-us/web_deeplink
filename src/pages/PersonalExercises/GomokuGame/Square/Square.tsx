@@ -1,17 +1,16 @@
 import clsx from 'clsx';
 import styles from './Square.module.css';
 import { Flag, SquareModel } from '../models';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'; // <-- import styles to be used
 import { memo } from 'react';
 import equals from 'react-fast-compare';
 
 interface Props {
   data: SquareModel;
+  won: boolean;
   onPress: ()=>void;
 }
 
-const Square = ({data, onPress}:Props) => {
+const Square = ({data, onPress, won}:Props) => {
   const renderIcon = (flag: any) => {
     switch(flag){
       case Flag.X:
@@ -22,12 +21,12 @@ const Square = ({data, onPress}:Props) => {
         return <></>;
     }
   }
-  console.log("@DUKE_Reload Square");
+  // console.log("@DUKE_Reload Square");
   return (
     <button 
-      disabled={data.flag !== null}
+      disabled={data.flag !== null || won}
       onClick={onPress} 
-      className={clsx(styles.button, {[styles.pressable]: data.flag === null}, {[styles.winSquare]: true})}>
+      className={clsx(styles.button, {[styles.pressable]: data.flag === null && !won}, {[styles.winSquare]: data.keyOfWin})}>
         {renderIcon(data.flag)}
     </button>
   )
