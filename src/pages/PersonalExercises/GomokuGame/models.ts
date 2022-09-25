@@ -2,6 +2,7 @@ export enum Flag {X, O}
 
 export interface SquareModel {
     flag: Flag.O | Flag.X | null;
+    keyOfWin: boolean;
 }
 
 export interface PointModel {

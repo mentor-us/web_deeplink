@@ -6,7 +6,7 @@ class Helper {
         for (let i = 0; i < rows; i++) {
         const col = new Array();
         for (let j = 0; j < columns; j++) {
-            const element:SquareModel = {flag: null};
+            const element:SquareModel = {flag: null, keyOfWin: false};
             col.push(element);
         }
         result.push(col);

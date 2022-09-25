@@ -27,7 +27,7 @@ const Square = ({data, onPress}:Props) => {
     <button 
       disabled={data.flag !== null}
       onClick={onPress} 
-      className={clsx(styles.button, {[styles.pressable]: data.flag === null})}>
+      className={clsx(styles.button, {[styles.pressable]: data.flag === null}, {[styles.winSquare]: true})}>
         {renderIcon(data.flag)}
     </button>
   )
