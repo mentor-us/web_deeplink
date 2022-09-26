@@ -40,7 +40,7 @@ export default function GomokuGame() {
       return;
     }
 
-    if(count == 25){
+    if(count === 25){
       alert("No one wins, This is a draw!")
       console.log("No one wins, This is a draw!");
     }
@@ -59,15 +59,9 @@ export default function GomokuGame() {
     setCount(0);
     setIsWon(false);
     setBoards(Helper.initBoard(n, n));
+    setHistories([]);
   }
 
-  // useLayoutEffect(()=>{
-  //   if(isWon){
-  //     alert(`${Flag[currentPlayer]} won!`);
-  //   }
-  // }, [isWon])
-
-  // console.log("@DUKE_Reload");
   return (
     <div>
       <div className={styles.container}>
@@ -91,7 +85,6 @@ export default function GomokuGame() {
             </div>
             <div className={styles.historyList}>
               {histories.map((item, index) => {
-                  
                   return(
                     <p className={clsx(styles.historyItem, {[styles.currentMove]: (!ascending && index === 0) || (ascending && index === histories.length - 1)})}>
                       {`${Flag[item.player]}:   (${item.point._x}, ${item.point._y}) at ${item.time}`}
