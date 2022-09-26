@@ -4,6 +4,7 @@ import Square from './Square/Square';
 import styles from './GomokuGame.module.css';
 import { Flag, HistoryModel, PointModel, SquareModel } from './models';
 import Helper from './helper';
+import isEqual from 'react-fast-compare';
 
 const WIN_MARK = 5;
 
@@ -62,6 +63,26 @@ export default function GomokuGame() {
     setHistories([]);
   }
 
+  const jumpToHistory = (item:HistoryModel)=>{
+    const index = histories.findIndex(element => isEqual(element, item));
+    const newBoards = [...boards];
+    if(ascending) {
+      const temps = histories.slice(index);
+      temps.forEach((element)=>{
+        newBoards[element.point._x][element.point._y] = {flag: null, keyOfWin: false};
+      })
+      setHistories(prev=>prev.slice(0, index));
+    }
+    else {
+      const temps = histories.slice(0, index - 1);
+      temps.forEach((element)=>{
+        newBoards[element.point._x][element.point._y] = {flag: null, keyOfWin: false};
+      })
+      setHistories(prev=>prev.slice(index - 1));
+    }
+    setBoards(newBoards)
+  }
+
   return (
     <div>
       <div className={styles.container}>
@@ -86,9 +107,9 @@ export default function GomokuGame() {
             <div className={styles.historyList}>
               {histories.map((item, index) => {
                   return(
-                    <p className={clsx(styles.historyItem, {[styles.currentMove]: (!ascending && index === 0) || (ascending && index === histories.length - 1)})}>
+                    <button onClick={()=>jumpToHistory(item)} className={clsx(styles.historyItem, {[styles.currentMove]: (!ascending && index === 0) || (ascending && index === histories.length - 1)})}>
                       {`${Flag[item.player]}:   (${item.point._x}, ${item.point._y}) at ${item.time}`}
-                    </p>
+                    </button>
                   )
                 })
               }
