@@ -67,18 +67,18 @@ export default function GomokuGame() {
     const index = histories.findIndex(element => isEqual(element, item));
     const newBoards = [...boards];
     if(ascending) {
-      const temps = histories.slice(index);
+      const temps = histories.slice(index + 1);
       temps.forEach((element)=>{
         newBoards[element.point._x][element.point._y] = {flag: null, keyOfWin: false};
       })
-      setHistories(prev=>prev.slice(0, index));
+      setHistories(prev=>prev.slice(0, index + 1));
     }
     else {
-      const temps = histories.slice(0, index - 1);
+      const temps = histories.slice(0, index);
       temps.forEach((element)=>{
         newBoards[element.point._x][element.point._y] = {flag: null, keyOfWin: false};
       })
-      setHistories(prev=>prev.slice(index - 1));
+      setHistories(prev=>prev.slice(index));
     }
     setBoards(newBoards)
   }
