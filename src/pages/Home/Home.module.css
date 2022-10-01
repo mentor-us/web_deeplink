@@ -3,9 +3,23 @@
 }
 
 .link{
-    padding: 8px;
-    background-color: green;
-    color: white;
-    border-radius: 4px;
+    display: flex;
     text-decoration: none;
+    color: black;
+    padding: 10px 32px;
+    background-color: green;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: column;
+    margin-right: 12px;
+}
+
+.detail {
+    line-height: 0;
+}
+
+.exerciseList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

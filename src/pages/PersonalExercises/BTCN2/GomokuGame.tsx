@@ -1,10 +1,10 @@
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
-import clsx from 'clsx';
-import Square from './Square/Square';
+import {useState} from 'react';
 import styles from './GomokuGame.module.css';
 import { Flag, HistoryModel, PointModel, SquareModel } from './models';
 import Helper from './helper';
 import isEqual from 'react-fast-compare';
+import Boards from './Boards';
+import HistoryBoard from './HistoryMove';
 
 const WIN_MARK = 5;
 
@@ -17,7 +17,7 @@ export default function GomokuGame() {
   const [count, setCount] = useState<number>(1);
   const [isWon, setIsWon] = useState<boolean>(false);
 
-  const onPressSquare = (x:  number, y: number, item: SquareModel)=>{
+  const onPressSquare = (x:  number, y: number)=>{
     const newMove = {flag: currentPlayer, keyOfWin: false};
     const newBoards = [...boards];
     newBoards[x][y] = newMove;
@@ -47,9 +47,9 @@ export default function GomokuGame() {
     }
   }
 
-  const renderSquare = (item: SquareModel, x: number, y: number)=>{
-    return <Square data={item} onPress={()=>onPressSquare(x, y, item)} won={isWon}/>
-  } 
+  // const renderSquare = (item: SquareModel, x: number, y: number)=>{
+  //   return <Square data={item} onPress={()=>onPressSquare(x, y)} won={isWon}/>
+  // } 
 
   const handleSortingHistory = ()=> {
     setAscending(prev => !prev);
@@ -90,32 +90,21 @@ export default function GomokuGame() {
         <button className={styles.button} onClick={createNewGame}>New Game {"(please input more than 10!)"}</button>
       </div>
       <div className={styles.container}>
-      {/* Boards */}
-        <table>
-          {
-            boards.map((rowItem, x)=>{
-              return(<tr>{rowItem.map((colItem, y)=>(<th>{renderSquare(colItem, x, y)}</th>))}</tr>)
-            })
-          }
-        </table>
-
-        <div className={styles.historyContainer}>
-            <div className={styles.historyHeader}>
-              <h3>History</h3>
-              <button onClick={handleSortingHistory} className={styles.button}>{ascending ? "Descending" : "Ascending"}</button>
-            </div>
-            <div className={styles.historyList}>
-              {histories.map((item, index) => {
-                  return(
-                    <button onClick={()=>jumpToHistory(item)} className={clsx(styles.historyItem, {[styles.currentMove]: (!ascending && index === 0) || (ascending && index === histories.length - 1)})}>
-                      {`${Flag[item.player]}:   (${item.point._x}, ${item.point._y}) at ${item.time}`}
-                    </button>
-                  )
-                })
-              }
-            </div>
-        </div>
-    </div>
+        {/* Boards */}
+        <Boards 
+          boards={boards}
+          onPressSquare={onPressSquare}
+          isWon={isWon}
+        />
+        {/* Histories Move */}
+        <HistoryBoard
+          ascending={ascending}          
+          isWon={isWon}
+          histories={histories}
+          jumpToHistory={jumpToHistory}
+          handleSortingHistory={handleSortingHistory}
+        />
+      </div>
     </div>
   )
 }
