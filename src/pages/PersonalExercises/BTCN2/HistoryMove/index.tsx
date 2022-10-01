@@ -1,6 +1,8 @@
 import { Flag, HistoryModel } from '../models';
 import styles from './styles.module.css';
 import clsx from 'clsx';
+import { memo } from 'react';
+import equals from 'react-fast-compare';
 
 interface Props {
     ascending: boolean,
@@ -11,6 +13,9 @@ interface Props {
 }
 
 const HistoryBoard = ({handleSortingHistory, ascending, histories, isWon, jumpToHistory}:Props) => {
+  
+  console.log("@DUKE_Reload HistoryBoard");
+
   return (
     <div className={styles.historyContainer}>
         <div className={styles.historyHeader}>
@@ -31,4 +36,4 @@ const HistoryBoard = ({handleSortingHistory, ascending, histories, isWon, jumpTo
   )
 }
 
-export default HistoryBoard;
+export default memo(HistoryBoard, equals);

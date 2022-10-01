@@ -48,4 +48,19 @@
     padding: 6px;
     border-radius: 8px;
     font-size: 16px;
+    border: 0;
+    padding: 8px;
+    margin-left: 10px;
+}
+
+
+.input {
+    height: fit-content;
+    width: fit-content;
+    padding: 6px;
+    border-radius: 8px;
+    font-size: 16px;
+    border:  1px solid #ccc;
+    padding: 8px;
+    outline: none;
 }

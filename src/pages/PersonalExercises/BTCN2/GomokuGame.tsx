@@ -47,10 +47,6 @@ export default function GomokuGame() {
     }
   }
 
-  // const renderSquare = (item: SquareModel, x: number, y: number)=>{
-  //   return <Square data={item} onPress={()=>onPressSquare(x, y)} won={isWon}/>
-  // } 
-
   const handleSortingHistory = ()=> {
     setAscending(prev => !prev);
     setHistories(prev => prev.reverse());
@@ -86,8 +82,8 @@ export default function GomokuGame() {
   return (
     <div>
       <div className={styles.container}>
-        <input type="number" className={styles.button} value={n} onChange={e=>{setN(+e.target.value > 9 ? +e.target.value : 10)}}/>
-        <button className={styles.button} onClick={createNewGame}>New Game {"(please input more than 10!)"}</button>
+        <input type="number" className={styles.input} value={n} onChange={e=>{setN(+e.target.value > 5 ? +e.target.value : 5)}}/>
+        <button className={styles.button} onClick={createNewGame}>New Game {"(please input more than 5!)"}</button>
       </div>
       <div className={styles.container}>
         {/* Boards */}
@@ -96,6 +92,7 @@ export default function GomokuGame() {
           onPressSquare={onPressSquare}
           isWon={isWon}
         />
+
         {/* Histories Move */}
         <HistoryBoard
           ascending={ascending}          
