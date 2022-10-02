@@ -41,7 +41,7 @@ export default function GomokuGame() {
       return;
     }
 
-    if(count === 25){
+    if(count === n*n - 1){
       alert("No one wins, This is a draw!")
       console.log("No one wins, This is a draw!");
     }
