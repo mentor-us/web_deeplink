@@ -1,0 +1,11 @@
+.container{
+    width: 500px;
+    height: 500px;
+    padding: 2px;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    display: block;
+    margin: 16px;
+    border: 1px solid black ;
+}

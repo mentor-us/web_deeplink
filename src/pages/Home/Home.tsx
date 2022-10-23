@@ -16,6 +16,12 @@ export default function Home() {
       toLink: '/web-nang-cao-19-3/btcn2', 
       status: EXERCISE_STATUS.DONE, 
       mark: 10
+    },
+    {
+      name: 'Bài tập cá nhân 3', 
+      toLink: '/web-nang-cao-19-3/btcn3', 
+      status: EXERCISE_STATUS.DONE, 
+      mark: 10
     }
   ]
   return (
