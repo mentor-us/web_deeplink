@@ -37,6 +37,12 @@ export default function BTCN3() {
             getMemeList();
         }
     }, [loading])
+
+    useEffect(()=>{
+        return ()=>{
+            setMemeList([]);
+        }
+    }, [])
     
     return (
         <div className={styles.container}>
