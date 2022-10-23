@@ -33,6 +33,7 @@ export default function BTCN3() {
     // Side effect
     useEffect(()=>{
         if(loading){
+            setMemeList([]);
             getMemeList();
         }
     }, [loading])
