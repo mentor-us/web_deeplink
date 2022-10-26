@@ -12,6 +12,7 @@
     height: fit-content;
     flex-direction: column;
     margin-right: 12px;
+    margin-bottom: 12px;
 }
 
 .detail {
