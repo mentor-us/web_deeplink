@@ -4,9 +4,10 @@ import BTCN_1 from "./pages/PersonalExercises/BTCN1/GomokuGame";
 import BTCN_2 from "./pages/PersonalExercises/BTCN2/GomokuGame";
 import BTCN_3 from "./pages/PersonalExercises/BTCN3";
 import BTCN_4 from "./pages/PersonalExercises/BTCN4";
+import BTCN_5 from "./pages/PersonalExercises/BTCN5";
+
 function App() {
   return (
-
     <div>
       {/* <h1>Hello</h1> */}
       <Routes>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/web-nang-cao-19-3/btcn2" element={<BTCN_2 />}/>
         <Route path="/web-nang-cao-19-3/btcn3" element={<BTCN_3 />}/>
         <Route path="/web-nang-cao-19-3/btcn4" element={<BTCN_4 />}/>
+        <Route path="/web-nang-cao-19-3/btcn5" element={<BTCN_5 />}/>
       </Routes>
     </div>
   );
