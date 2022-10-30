@@ -21,7 +21,6 @@ const Square = ({data, onPress, won}:Props) => {
         return <></>;
     }
   }
-  console.log("@DUKE_Reload Square");
   return (
     <button 
       disabled={data.flag !== null || won}

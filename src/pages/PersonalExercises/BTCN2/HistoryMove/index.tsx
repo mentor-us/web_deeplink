@@ -13,8 +13,7 @@ interface Props {
 }
 
 const HistoryBoard = ({handleSortingHistory, ascending, histories, isWon, jumpToHistory}:Props) => {
-  
-  console.log("@DUKE_Reload HistoryBoard");
+
 
   return (
     <div className={styles.historyContainer}>

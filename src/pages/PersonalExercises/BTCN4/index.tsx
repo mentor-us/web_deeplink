@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { UserModel } from './model';
 import styles from './styles.module.css'
 import clsx from 'clsx';
-
+import APIService from './services';
 
 const intiValue: UserModel = {
   email: '',
@@ -15,22 +15,6 @@ export default function BTCN4() {
   const [userList, setUserList] = useState<UserModel[]>([]);
   const [user, setUser] = useState<UserModel>(intiValue);
   const [repeatPassWord, setRepeatPassword] = useState<string>('');
-
-  const postData = async(url = '', data = {}) => {
-    
-    // Default options are marked with *
-    const response = await fetch(url, {
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'no-cors', // no-cors, *cors, same-origin
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data) // body data type must match "Content-Type" header
-    });
-    console.log('@DUKE_BODY', JSON.stringify(data));
-
-    return response.json(); // parses JSON response into native JavaScript objects
-  }
 
   const handleSubmit = async()=>{
     if(repeatPassWord !== user.password){
@@ -49,7 +33,6 @@ export default function BTCN4() {
       return;
     }
 
-
     if(!user.password){
       alert('Empty password');
       return;
@@ -59,50 +42,29 @@ export default function BTCN4() {
       alert('Empty age');
       return;
     }
+
     try {
-      const res = await postData('http://localhost:8080/api/user/', user);
-      
-      setUserList((prev)=>{
-        return [...prev, user];
-      })
+      APIService.postUser(user);
+      setUserList((prev)=>([...prev, user]))
     } catch (error) {
-      console.log('@DUKE__', error);
+      console.log('@ERROR__', error);
     }
-    
   }
 
   const getUserList = async () => {
-    const url = 'http://localhost:8080/api/user/';
-    return fetch(url, 
-      {
-        method: 'GET', 
-        mode: 'no-cors',
-        headers:{
-          'Access-Control-Allow-Origin':'*'
-        },
-      }).then((response):any=>{
-        console.log('@DUKE__', response);
-        
-        if(response.ok){
-            return response.json().then(response=>{
-                console.log('@DUKE_', response);
-                return {data: response || []};
-            })
-        }
-        response.json().then(response=>{
-        })
-        return response.json().then(status=>({status}))
-    })
+    try{
+      APIService.getUserList().then((data)=>{
+        console.log('@DUKE_', data);
+        setUserList(data);
+      })
+    }
+    catch(error){
+
+    }
   }
 
   useEffect(()=>{
-    try {
-        getUserList();
-    } catch (error) {
-      console.log('@ERROR', error);
-      
-    }
-   
+    getUserList();
   }, [])
   
   return (
