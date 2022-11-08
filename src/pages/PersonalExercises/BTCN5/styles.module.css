@@ -1,5 +1,8 @@
 .container {
     padding: 32px;
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
 }
 
 .fieldNameInput {
@@ -31,4 +34,8 @@
 
 .buttonSubmit:active {
     background-color: #00ff00;
+}
+
+.info {
+    padding: 0px 64px;
 }

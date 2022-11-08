@@ -6,9 +6,13 @@ import BTCN_3 from "./pages/PersonalExercises/BTCN3";
 import BTCN_4 from "./pages/PersonalExercises/BTCN4";
 import BTCN_5 from "./pages/PersonalExercises/BTCN5";
 
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <div>
+    <QueryClientProvider client={queryClient}>
+      <div>
       {/* <h1>Hello</h1> */}
       <Routes>
         {/* <Route path="/" element={<Home />}/> */}
@@ -20,6 +24,7 @@ function App() {
         <Route path="/web-nang-cao-19-3/btcn5" element={<BTCN_5 />}/>
       </Routes>
     </div>
+    </QueryClientProvider>
   );
 }
 

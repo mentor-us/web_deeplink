@@ -3,7 +3,6 @@ import { UserModel } from "./model";
 
 const USER_URL = 'http://localhost:8080/api/user/';
 
-
 class APIService {
     static async getUserList(){
         const promise = axios.get(USER_URL);

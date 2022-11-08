@@ -1,6 +1,5 @@
 import { EXERCISE_STATUS } from '../../utilities/constants';
 import ExerciseCard from './ExerciseCard';
-
 import styles from './Home.module.css';
 
 export default function Home() {

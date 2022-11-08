@@ -1,4 +1,4 @@
-export interface CustomnerModel {
+export interface CustomerModel {
     email:string,
     password: string,
     fullname: string,
@@ -6,6 +6,6 @@ export interface CustomnerModel {
     address: string,
 }
 
-export interface CustomnerFormModel extends CustomnerModel{
+export interface CustomnerFormModel extends CustomerModel{
     repeatPassWord: string,
 }
