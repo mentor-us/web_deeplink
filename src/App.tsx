@@ -8,7 +8,6 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <div>
-      <p>Hello MentorUS-er</p>
       <Routes>
         <Route
           path="/"
@@ -49,3 +48,5 @@ function App() {
 
 export default App;
 // "homepage": "https://tramhuuducvn.github.io/web-nang-cao-19-3/",
+
+// https://web-nang-cao-19-3-ymeb.vercel.app/web-nang-cao-19-3/chat
