@@ -7,37 +7,43 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<TestDeepLink path={window.location.href} />} />
-      <Route
-        path="/web-nang-cao-19-3"
-        element={<TestDeepLink path={window.location.href} />}
-      />
-      <Route
-        path="/web-nang-cao-19-3/chat"
-        element={<TestDeepLink path={window.location.href} />}
-      />
-      <Route
-        path="/web-nang-cao-19-3/btcn2"
-        element={<TestDeepLink path={window.location.href} />}
-      />
-      <Route
-        path="/web-nang-cao-19-3/btcn3"
-        element={<TestDeepLink path={window.location.href} />}
-      />
-      <Route
-        path="/web-nang-cao-19-3/btcn4"
-        element={<TestDeepLink path={window.location.href} />}
-      />
-      <Route
-        path="/web-nang-cao-19-3/btcn5"
-        element={<TestDeepLink path={window.location.href} />}
-      />
-      <Route
-        path="/web-nang-cao-19-3/test-deeplink"
-        element={<TestDeepLink path={window.location.href} />}
-      />
-    </Routes>
+    <div>
+      <p>Hello MentorUS-er</p>
+      <Routes>
+        <Route
+          path="/"
+          element={<TestDeepLink path={window.location.href} />}
+        />
+        <Route
+          path="/web-nang-cao-19-3"
+          element={<TestDeepLink path={window.location.href} />}
+        />
+        <Route
+          path="/web-nang-cao-19-3/chat"
+          element={<TestDeepLink path={window.location.href} />}
+        />
+        <Route
+          path="/web-nang-cao-19-3/btcn2"
+          element={<TestDeepLink path={window.location.href} />}
+        />
+        <Route
+          path="/web-nang-cao-19-3/btcn3"
+          element={<TestDeepLink path={window.location.href} />}
+        />
+        <Route
+          path="/web-nang-cao-19-3/btcn4"
+          element={<TestDeepLink path={window.location.href} />}
+        />
+        <Route
+          path="/web-nang-cao-19-3/btcn5"
+          element={<TestDeepLink path={window.location.href} />}
+        />
+        <Route
+          path="/web-nang-cao-19-3/test-deeplink"
+          element={<TestDeepLink path={window.location.href} />}
+        />
+      </Routes>
+    </div>
   );
 }
 
