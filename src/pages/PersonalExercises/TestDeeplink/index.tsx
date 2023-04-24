@@ -1,16 +1,20 @@
 import styles from "./styles.module.css";
 
-export default function TestDeepLink() {
+interface Props {
+  path: string;
+}
+
+export default function TestDeepLink({ path }: Props) {
   const onSubmit = () => {
-    console.log("@DUKE");
+    const intentLink = path.replace("http", "intent");
+    const url = `${intentLink}#Intent;scheme=https;end`;
+    console.log("@DUKE: ", url);
     // document.location.replace("https://www.w3schools.com");
     // document.location.replace(
     //   "intent://mentor.fit.hcmus.edu.vn/#Intent;scheme=https;end"
     // );
     // https://tramhuuducvn.github.io/web-nang-cao-19-3/
-    document.location.replace(
-      "intent://tramhuuducvn.github.io/web-nang-cao-19-3#Intent;scheme=https;end"
-    );
+    document.location.replace(url);
   };
 
   return (
