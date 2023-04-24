@@ -6,7 +6,7 @@ interface Props {
 
 export default function TestDeepLink({ path }: Props) {
   const onSubmit = () => {
-    const intentLink = path.replace("http", "intent");
+    const intentLink = path.replace("https", "intent");
     const url = `${intentLink}#Intent;scheme=https;end`;
     console.log("@DUKE: ", url);
     // document.location.replace("https://www.w3schools.com");
