@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
-import { QueryClient } from "react-query";
-import TestDeepLink from "./pages/PersonalExercises/TestDeeplink";
+import TestDeepLink from "./pages/TestDeeplink";
 
 function App() {
   return (
