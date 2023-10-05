@@ -7,15 +7,11 @@ interface Props {
 export default function TestDeepLink({ path }: Props) {
   const onSubmit = () => {
     const intentLink = path.replace("https", "intent");
-    const url = `${intentLink}#Intent;scheme=https;end`;
+    const url = `${intentLink}#Intent;scheme=https;package=com.mentorus;end`;
     console.log("@DUKE: ", url);
-    // document.location.replace("https://www.w3schools.com");
-    // document.location.replace(
-    //   "intent://mentor.fit.hcmus.edu.vn/#Intent;scheme=https;end"
-    // );
-    // https://tramhuuducvn.github.io/web-nang-cao-19-3/
-    // document.location.replace(url);
-    document.location.href = url;
+    // document.location.replace("intent://my.vng.vn/me/support-center#Intent;scheme=https;package=com.myvng.eportal.app.mobile;end");
+
+    document.location.replace(url);
   };
 
   return (
