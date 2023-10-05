@@ -14,7 +14,8 @@ export default function TestDeepLink({ path }: Props) {
     //   "intent://mentor.fit.hcmus.edu.vn/#Intent;scheme=https;end"
     // );
     // https://tramhuuducvn.github.io/web-nang-cao-19-3/
-    document.location.replace(url);
+    // document.location.replace(url);
+    document.location.href = url;
   };
 
   return (
